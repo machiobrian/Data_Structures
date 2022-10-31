@@ -1,6 +1,6 @@
 // search by linear traversal in an unsorted array
 
-#include <bits/stdc++.h>
+#include <bits/stdc++.h> //bits that has every standard lib, timesensitive
 using namespace std;
 
 //function to implement a search opertion
@@ -21,9 +21,10 @@ int main()
 {
     int arr[] {12, 34, 10, 6, 40}; //universal initialization of arrays
     int n = sizeof(arr) / sizeof(arr[0]);
+    cout << n;
 
     // using last element as search element
-    int key = 40;
+    int key = 34;
 
     // function call
     int position = findElement(arr, n, key);
