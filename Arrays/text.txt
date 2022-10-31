@@ -6,3 +6,6 @@ Allow random access to elements. Can be accessed using loops
 Makes Searching, Insertion and Access very easy
 
 Arrays store every element in a single namespace hence can be easily accessed, all at once
+
+https://en.cppreference.com/w/cpp/language/sizeof
+sizeof(int 10) -> an array of 10 int: 40
