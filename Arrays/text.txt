@@ -1,0 +1,8 @@
+Arrays are static in nature, once initialized, the sizes cannot be changed 
+unless by the compiler {static memory allocation}
+Arrays is a collection of items of the same data type
+
+Allow random access to elements. Can be accessed using loops
+Makes Searching, Insertion and Access very easy
+
+Arrays store every element in a single namespace hence can be easily accessed, all at once
