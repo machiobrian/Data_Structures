@@ -166,9 +166,13 @@ Data Lake: Data dump: structured, unstr, semi: images, sensor, systems etc
 	Regression - Relationship btn a dependent and independent variable
 	linear vs polynomial vs Multivariate regression
 	
-	Time Series analysis/forecasting - predict the future value of a series based on the history of the series.
+	Time Series analysis/forecasting - predict the future value of a series based on the history
+	of the series.
 	Time series - A sequence of discrete time data, taken at a particular interval. 
 	time series analysis vs regression
+	
+	Forecasting Error #####
+	MAE: abs value of the differnce btn predicted and actual values 
 	
 	Clustering is unsupervised
 	
@@ -214,47 +218,47 @@ Measures of Spread/ Variability and Dispersion : More meaningful insights out of
  		
 Section 5: Interpreting Data
 
- 		
- 	  			 
- 		  			 
-		  			 
+Different Metrics and Analysis: Give diff types of outputs [Outputs: Statistics, Co-efficients, Probalilities and Errors].
+Data Interpretation requires Domain Expertise, also, asking the right kind of questions
+
+
+	Correlation Analysis:
+		- Shows the strength and direction of an existing linear r/ship btn variables.
+		- Only applicable on numerical/quantitative values : income vs age
+		- Scatter plots are used to represent correlated data
+		- If a correlation exists, one should be able to draw a straight line that fits the
+			data well- this is a Regression line {positive/negative - one var increase
+			the other decreases}.
+		- Strong, Perfect and Weak correlation (how far are the data points from the line)
+		 or no correlation (data has no relationship, the line is basically flat)
 	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	
+	
+	Correlation Co-efficient:
+		- A statistic that summarizes the relationship found in a sctter plot w/a single no.
+		- Correlation co-eff range from -1 to +1..
+		The higher the abs value of the relation co-eff, the stronger the correlation.
+		
+		#the r/ship btn variables ought not to be linear, they can be exponential/
+		logarithmic
+		
+		- real world correlation co-eff: 
+				<0.25: no corr
+				0.25-0.50: weak
+				0.50 - 0.75: moderate
+				>0.75: strong
+		
+		
+	Correlation is not always = Causation:
+		- Correlation only gives statistical eivdence, it does not show causation
+	
+	Linear Regression: y=mx+c
+				y - dependent
+				x - idependent var
+				m - slope
+				c - intercept
+	
+	Good regression: Small difference btn predicted and observed values
+	This we check using the co-eff of determination; How well correlation eqn works R**2 [0/1]
+	0 - the regression model explains no relationship btn the variables
+	1 - the regression model explains the whole variance in the dependent model
