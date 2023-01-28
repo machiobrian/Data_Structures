@@ -207,10 +207,115 @@ int get_board_state(char board[3][3], char marker)
 }
 
 // Apply the minimax game optimization algorithm
+std::pair<int, std::pair<int, int>> minimax_optimization(char board[3][3], char marker, int depth, int alpha, int beta)
+{
+    // Initialize the best move
+    std::pair<int, int> best_move = std::make_pair(-1,-1);
+    int best_score = (marker == ai_marker) ? loss : win;
+
+    // if we ht a terminal state (leaf-node), return the best score and move
+    if (board_is_full(board) || draw != get_board_state(board, ai_marker))
+    {
+        best_score = get_board_state(board, ai_marker);
+        return std::make_pair(best_score, best_move);
+    }
+
+    std::vector<std::pair<int, int>> legal_moves = get_legal_moves(board);
+
+    for (int i = 0; i < legal_moves.size(); i++)
+    {
+        std::pair<int, int> current_move = legal_moves[i];
+        board[current_move.first][current_move.second] = marker;
+
+        // maximixing player's turn
+        if (marker == ai_marker)
+        {
+            int score = minimax_optimization(board, player_marker, depth+1, alpha, beta).first;
+
+            // get the best scoring move
+            if (best_score < score)
+            {
+                best_score = score - depth*10;
+                best_move = current_move;
+
+                /* check if this branch's best move is worse than the best option,
+                of a previous search branch. if it so [worse than the best option], skip it. */
+                alpha = std::max(alpha, best_score);
+                board[current_move.first][current_move.second] = empty_space;
+                if (beta <= alpha)
+                {
+                    break;
+                }
+            }
+            
+        } 
+        // otherwise- minimize the opponent's best turn
+        else
+        {   
+            int score = minimax_optimization(board, ai_marker, depth+1, alpha, beta).first;
+
+            if (best_score > score)
+            {
+                best_score = score + depth*10;
+                best_move = current_move;
+
+                /* check if this branch's best move is worse than the best option of a previously
+                searched branch. if it is so (best move is worse that previous) skip */
+                beta = std::min(beta, best_score);
+                board[current_move.first][current_move.second] = empty_space;
+                if (beta <= alpha)
+                {
+                    break;
+                }
+            }
+        }
+
+        board[current_move.first][current_move.second] = empty_space; //undo move
+    }
+    return std::make_pair(best_score, best_move);
+}
+
+
+// check if the game is kwinished
+bool is_game_done(char board[3][3])
+{
+    if (board_is_full(board))
+    {
+        return true;
+    }
+    if (draw != get_board_state(board, ai_marker))
+    {
+        return true;
+    }
+    return false;
+}
 
 int main()
 {
     char board[3][3] = {empty_space};
-
+    cout << "Player - X \t AI = 0" << endl << endl;
     print_board(board);
+
+    while (!is_game_done(board))
+    {
+        int row, col;
+        cout << "Row play: ";
+        cin >> row;
+        cout << "Column play: ";
+        cin >> col;
+        cout << endl << endl;
+
+        if (position_occupied(board, std::make_pair(row, col)))
+        {
+            cout << "The Position (" << row << ", " << col << ") is occupied. TRY ANOTHER";
+            continue;
+        }
+        else
+        {
+            board[row][col] = player_marker;
+        }
+
+        
+
+    }
 }
