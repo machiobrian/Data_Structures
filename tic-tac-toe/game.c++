@@ -307,7 +307,7 @@ int main()
 
         if (position_occupied(board, std::make_pair(row, col)))
         {
-            cout << "The Position (" << row << ", " << col << ") is occupied. TRY ANOTHER";
+            cout << "The Position (" << row << ", " << col << ") is occupied. TRY ANOTHER ONE";
             continue;
         }
         else
@@ -315,7 +315,16 @@ int main()
             board[row][col] = player_marker;
         }
 
-        
-
+        std::pair<int, std::pair<int, int>> ai_move = minimax_optimization(board, ai_marker, start_depth, loss, win);
+        board[ai_move.second.first][ai_move.second.second] = ai_marker;
+        print_board(board);
     }
+
+    cout << "GAME OVER" << endl << endl;
+
+    int player_state = get_board_state(board, player_marker);
+
+    cout << "PLAYER "; print_game_state(player_state);
+
+    return 0;
 }
