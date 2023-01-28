@@ -206,6 +206,7 @@ int get_board_state(char board[3][3], char marker)
     return draw;    
 }
 
+// Apply the minimax game optimization algorithm
 
 int main()
 {
